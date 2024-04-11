@@ -55,11 +55,15 @@ class _HomePageState extends State<HomePage> {
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
 
-        child: Column(children: [
-          const Text("Welcome to Breadbot sandwich making machine"),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          
+          children: [
+          const Text("Welcome to Breadbot sandwich making machine", style: TextStyle(fontSize: 16)),
+          const Padding(padding: EdgeInsets.all(8.0)),
           ElevatedButton(
               onPressed: () {
-                print("Button pressed");
+                print("Button Pressed");
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const OptionsPage()),
@@ -154,7 +158,7 @@ class BreadChoices extends StatelessWidget {
                 // trigger focus request on the text field and virtual keyboard will appear
                 // afterward. On desktop platforms however, this defaults to true.
                 requestFocusOnTap: true,
-                label: const Text('Bread choice'),
+                label: const Text('Bread Choice'),
                 onSelected: (Bread? bread) {
                   print("Chose ${bread?.type}");
                 },
@@ -168,7 +172,7 @@ class BreadChoices extends StatelessWidget {
               ),
             ),
             ElevatedButton(
-              child: const Text('Confirm bread choice'),
+              child: const Text('Confirm Bread Choice'),
               onPressed: () {
                 Navigator.push(
                   context,
@@ -187,15 +191,15 @@ enum Topping {
   pepperjack('Pepper Jack'),
   cheddar('Cheddar'),
   noCheese('No Cheese'),
-  turkey('turkey'),
-  chicken('chicken'),
-  pastrami('pastrami'),
+  turkey('Turkey'),
+  chicken('Chicken'),
+  pastrami('Pastrami'),
   seitan('Seitan'),
   beyondMeat('Beyond Meat'),
   noMeat('No Meat'),
   tomato('Tomato'),
   cucumber('Cucumber'),
-  springMix('Spring mix'),
+  springMix('Spring Mix'),
   lettuce('Lettuce'),
   onion('Onion'),
   noToppings('No Toppings');
@@ -219,62 +223,6 @@ class ToppingsChoices extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            /*DropdownMenu<Cheese>(
-              initialSelection: Cheese.noCheese,
-              controller: cheeseChoiceController,
-              requestFocusOnTap: true,
-              label: const Text('Cheese choice'),
-              onSelected: (Cheese? cheese) {
-                print("Chose ${cheese?.type}");
-              },
-              dropdownMenuEntries:
-                  Cheese.values.map<DropdownMenuEntry<Cheese>>((Cheese cheese) {
-                return DropdownMenuEntry<Cheese>(
-                  value: cheese,
-                  label: cheese.type,
-                );
-              }).toList(),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            DropdownMenu<Meat>(
-              initialSelection: Meat.noMeat,
-              controller: meatChoiceController,
-              requestFocusOnTap: true,
-              label: const Text('Meat choice'),
-              onSelected: (Meat? meat) {
-                print("Chose ${meat?.type}");
-              },
-              dropdownMenuEntries:
-                  Meat.values.map<DropdownMenuEntry<Meat>>((Meat meat) {
-                return DropdownMenuEntry<Meat>(
-                  value: meat,
-                  label: meat.type,
-                );
-              }).toList(),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            DropdownMenu<Veggies>(
-              initialSelection: Veggies.noToppings,
-              controller: veggieChoiceController,
-              requestFocusOnTap: true,
-              label: const Text('Vegetable choice'),
-              onSelected: (Veggies? veggie) {
-                print("Chose ${veggie?.type}");
-              },
-              dropdownMenuEntries: Veggies.values
-                  .map<DropdownMenuEntry<Veggies>>((Veggies veggie) {
-                return DropdownMenuEntry<Veggies>(
-                  value: veggie,
-                  label: veggie.type,
-                );
-              }).toList(),
-            ),*/
-
-
             MultiSelectDropDown<Topping> (
                     controller: multiSelectController,
                     onOptionSelected: (options) {},
@@ -309,7 +257,7 @@ class ToppingsChoices extends StatelessWidget {
               height: 10,
             ),
             ElevatedButton(
-              child: const Text('comfirm toppings'),
+              child: const Text('Confirm Toppings'),
               onPressed: () {
                 Navigator.push(
                   context,
@@ -346,7 +294,7 @@ class OrderConfirmation extends StatelessWidget {
               },
             ),
             ElevatedButton(
-              child: const Text('Add More'),
+              child: const Text('Add Another Sandwich'),
               onPressed: () {
                 Navigator.push(
                   context,
@@ -369,12 +317,20 @@ class Thankyou extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Center(
-        child: ElevatedButton(
-          child: const Text('Thank you'),
-          onPressed: () {
-            Navigator.popUntil(
-                context, ModalRoute.withName(Navigator.defaultRouteName));
-          },
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          
+          children: [
+              const Text('Thank you for your order',style: TextStyle(fontSize: 16)),
+              
+              ElevatedButton(
+                child: const Text('Return to Homepage'),
+                onPressed: () {
+                  Navigator.popUntil(
+                      context, ModalRoute.withName(Navigator.defaultRouteName));
+                },
+              ),
+          ],
         ),
       ),
     );
