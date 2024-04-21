@@ -57,7 +57,6 @@ class _HomePageState extends State<HomePage> {
 
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          
           children: [
           const Text("Welcome to Breadbot sandwich making machine", style: TextStyle(fontSize: 16)),
           const Padding(padding: EdgeInsets.all(8.0)),
@@ -147,6 +146,7 @@ class BreadChoices extends StatelessWidget {
       appBar: AppBar(),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
